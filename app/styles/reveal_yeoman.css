@@ -1,0 +1,649 @@
+/**
+ * GDG(google developer group) theme for reveal.js.
+ *
+ * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ */
+
+/*********************************************
+ * GLOBAL STYLES
+ *********************************************/
+
+body {
+  background: -webkit-radial-gradient(center, circle cover, #fffffe 0%, #fff 100%);
+  background-color: white;
+  font-family: 'Open Sans',arial,sans-serif;
+}
+
+.reveal {
+  font-size: 36px;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  color: #333333;
+}
+
+/*.reveal section {
+  width:3em;
+  height:3em;
+  overflow: hidden;
+  border:1px solid yellow
+};
+*/
+
+::selection {
+  color: white;
+  background: rgba(79, 64, 28, 0.99);
+  text-shadow: none;
+}
+
+/*********************************************
+ * HEADERS
+ *********************************************/
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  margin: 0 0 20px 0;
+  color: #333333;
+  line-height: 0.9em;
+  letter-spacing: 0.02em;
+  text-shadow: none;
+}
+
+
+.reveal h1 {
+  text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 20px 20px rgba(0, 0, 0, 0.15);
+  text-transform: uppercase;
+}
+
+.reveal h2 {
+  text-transform: uppercase;
+}
+
+.reveal h3 {
+  text-transform: uppercase;
+}
+
+.reveal h4 {
+  text-transform: uppercase;
+}
+
+.reveal sup {
+  font-size: 0.7em;
+  text-transform: lowercase;
+}
+
+/*********************************************
+ * LINKS
+ *********************************************/
+.reveal a:not(.image) {
+  color: #8b743d;
+  text-decoration: none;
+  -webkit-transition: color .15s ease;
+  -moz-transition: color .15s ease;
+  -ms-transition: color .15s ease;
+  -o-transition: color .15s ease;
+  transition: color .15s ease;
+}
+
+.reveal a:not(.image):hover {
+  color: #c0a86e;
+  text-shadow: none;
+  border: none;
+}
+
+.reveal .roll span:after {
+  color: #fff;
+  background: #564826;
+}
+
+/*********************************************
+ * IMAGES
+ *********************************************/
+.reveal section img {
+  /*margin: 15px;*/
+  /*background: rgba(255, 255, 255, 0.12);*/
+  /*border: 4px solid #333333;*/
+  /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);*/
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  -ms-transition: all .2s linear;
+  -o-transition: all .2s linear;
+  transition: all .2s linear;
+}
+
+.reveal a:hover img {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #8b743d;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.55);
+}
+
+/*********************************************
+ * NAVIGATION CONTROLS
+ *********************************************/
+.reveal .controls div.navigate-left,
+.reveal .controls div.navigate-left.enabled {
+  border-right-color: #8b743d;
+}
+
+.reveal .controls div.navigate-right,
+.reveal .controls div.navigate-right.enabled {
+  border-left-color: #8b743d;
+}
+
+.reveal .controls div.navigate-up,
+.reveal .controls div.navigate-up.enabled {
+  border-bottom-color: #8b743d;
+}
+
+.reveal .controls div.navigate-down,
+.reveal .controls div.navigate-down.enabled {
+  border-top-color: #8b743d;
+}
+
+.reveal .controls div.navigate-left.enabled:hover {
+  border-right-color: #c0a86e;
+}
+
+.reveal .controls div.navigate-right.enabled:hover {
+  border-left-color: #c0a86e;
+}
+
+.reveal .controls div.navigate-up.enabled:hover {
+  border-bottom-color: #c0a86e;
+}
+
+.reveal .controls div.navigate-down.enabled:hover {
+  border-top-color: #c0a86e;
+}
+
+/*********************************************
+ * PROGRESS BAR
+ *********************************************/
+.reveal .progress {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.reveal .progress span {
+  background: #8b743d;
+  -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -ms-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -o-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+}
+
+.reveal pre code {
+  padding:10px;
+}
+
+
+/*
+ * Custom
+ */
+
+#titleroll {
+  font-size: 39px;
+  background-image: url(../images/chrome-logo-origin.png);
+  /*width: 100%;*/
+  height: 300px;
+  background-repeat: no-repeat;
+  background-position: 50% 0%;
+  background-size: 300px 300px;
+  vertical-align: bottom;
+  line-height: 700px;
+}
+
+
+#aboutme {
+  width:930px;
+  height:566px;
+  background-image: url(../images/jimmymoon-logo.png);
+  background-repeat: no-repeat;
+  background-position: 0% 50%;
+  background-size: 40%;
+}
+
+#aboutme #intro {
+  height:320px;
+  padding-left:320px;
+}
+
+#profile {
+  border: 0;
+  box-shadow: none;
+  background: none;
+  width: 1em;
+  padding: 0;
+  margin: 0;
+  margin-top: 10px;
+  /*float:left;*/
+}
+/*#aboutme u {
+  background-image: url(../images/jimmymoon-logo.png);
+  background-repeat: no-repeat;
+  padding-left:320px;
+  height:320px;
+}*/
+
+
+#userid {
+  color: rgb(200, 10, 10);
+}
+
+h2.chromeapp-logo {
+  background-image: url(../images/chrome-logo-origin.png);
+  background-repeat: no-repeat;
+  background-position: 0: 50%;
+  background-size: 300px 300px;
+  height: 300px;
+  padding-left: 260px;
+  line-height: 300px;
+}
+
+#packagedapp h2.chromeapp-logo {
+  font-size:46px;
+}
+
+#packagedapp li {
+  list-style-type: none;
+}
+
+#packagedapp ul li:nth-child(1) {
+  color: #efefef;
+  background-color: #2E67F1;
+}
+
+#packagedapp ul li:nth-child(2) {
+  color: #efefef;
+  background-color: #0D9900;
+}
+
+#packagedapp ul li:nth-child(3) {
+  color: #efefef;
+  background-color: #EEB300;
+}
+
+#packagedapp ul li:nth-child(4) {
+  color: #efefef;
+  background-color: #D5151D;
+}
+
+#manifest-compare ul {
+  margin:0;
+  padding:0;
+}
+
+#manifest-compare td {
+  width: 300px;
+  margin:0;
+  padding:0;
+}
+
+#manifest-compare pre {
+  margin:0;
+  padding:0;
+  width: 100%;
+  font-size:0.5em;
+}
+
+.note {
+  width: 100%;
+  font-size: 0.4em !important;
+}
+
+.code-label {
+  font-size:0.7em !important;
+  width:100%;
+  text-align:left;
+  display: block;
+}
+
+.chromeapp-launcher {
+  background-image: url(../images/chromeapp-launcher.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#download-chromeapp {
+  background-image: url(../images/wunderlist-download.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  width:930px;
+  height:566px;
+  padding:0;
+  margin:0;
+  /*background-size: 100%;*/
+}
+
+#wunderlist {
+  width:930px;
+  height:566px;
+  padding:0;
+  margin:0;
+}
+
+#wunderlist div {
+  position: absolute;
+  top:0;
+  left:0;
+  width:930px;
+  height:566px;
+}
+
+#wunderlist-offline-png {
+  background-image: url(../images/wunderlist-offline.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#wunderlist-icon {
+  background-image: url(../images/wunderlist-app-icon.png);
+  background-repeat: no-repeat;
+  background-position: 50% 40%;
+  width:197px;
+  height:205px;
+  padding-top: 29px;
+}
+
+#chromeapp-launcher {
+  width:930px;
+  height:566px;
+  padding:0;
+  margin:0;
+}
+
+#chromeapp-launcher div {
+  position: absolute;
+  top:0;
+  left:0;
+  width:930px;
+  height:566px;
+}
+
+#chromeapp-launcher-icon {
+  background-image: url(../images/chromeapp-launcher-icon.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+#no-browser-capture {
+  top:0;
+  left:0;
+  width:930px;
+  height:566px;
+  background-image: url(../images/no-browser-capture.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#chat-demo {
+  width:930px;
+  height:566px;
+}
+
+#multi-device-capable {
+  width:930px;
+  height:566px;
+}
+
+#multi-device-capable .viwer div {
+  position: absolute;
+  top:0;
+  left:0;
+  width:930px;
+  height:566px;
+}
+
+#devices {
+  background-image: url(../images/devices.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#chromeapp-launchers {
+  background-image: url(../images/chromeapp-launchers.png);
+  background-repeat: no-repeat;
+  background-position: 50% 100%;
+}
+
+
+#mobile-devices {
+  width:100%;
+  height:450px;
+  background-image: url(../images/mobile-devices.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+#development-toolset img {
+  border:0;
+  box-shadow:none;
+  background:none;
+  margin: 0;
+}
+
+#development-toolset ul {
+  margin:0;
+}
+
+#development-toolset ul li {
+  line-height:1.2em;
+}
+
+#toolset {
+  width: 933px;
+  height: 300px;
+}
+
+#toolset-yo {
+  width: 210px;
+  position: absolute;
+  top: 90px;
+  left: 272px;
+  height: 500px;
+  font-size:0.7em;
+}
+
+#toolset-yo ul {
+  margin-top: -40px;
+  padding-left:20px;
+}
+
+#yo-color {
+  width: 201px;
+  height: 300px;
+}
+
+#toolset-grunt {
+  width: 210px;
+  position: absolute;
+  top: 91px;
+  left: 511px;
+  height: 500px;
+  font-size:0.7em;
+}
+
+#toolset-grunt ul {
+  margin-top: -30px;
+  padding-left:20px;
+}
+
+#toolset-bower {
+  /* width: 241px; */
+  position: absolute;
+  top: 119px;
+  left: 670.1px;
+  height: 500px;
+  font-size:0.7em;
+}
+
+#toolset-bower ul {
+  margin-top: 6px;
+  padding-left: 100px
+}
+
+#toolset-yo li:nth-child(3) {
+  line-height:0.9em;
+}
+
+#toolset-grunt li:nth-child(2) {
+  line-height:0.9em;
+}
+
+/*#toolset-grunt li:nth-child(1) {
+  line-height:0.9em;
+}
+*/
+
+#workflow-demo {
+  width:930px;
+  height:566px;
+}
+
+
+#development-workflow h2 {
+  line-height: 1em !important;
+  padding-top:0.6em
+}
+
+#boilerplate {
+  width:930px;
+  height:566px;
+}
+
+#boilerplate div {
+  position: absolute;
+  top:0;
+  left:0;
+  width:930px;
+  height:566px;
+}
+
+#boilerplate-today {
+  background-image: url(../images/boiler-today.png);
+}
+
+#boilerplate-tomorrow {
+  background-image: url(../images/boiler-tomorrow.png);
+}
+
+#chrome {
+  width:930px;
+  height:566px;
+}
+
+#chrome div {
+  position: absolute;
+  top:35px;
+  left:0;
+  width:930px;
+  height:566px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#chrome-logo {
+  background-image: url(../images/chromes.png);
+  background-size: 65%;
+}
+
+#chrome-750mil {
+  background-image: url(../images/750mil.png);
+  background-size: 100%;
+  background-position: 0% 70px !important;
+}
+
+#chromestudio {
+  width:1024px;
+  height:768px;
+}
+
+#chromestudio div {
+  /*position: absolute;
+  left:0;
+  top:180px;
+  width:1024px;
+  height:768px;*/
+}
+
+.inner-slide div {
+  position: absolute;
+  left:0;
+  top:180px;
+  width:1024px;
+  height:768px;
+}
+
+.offline-by-default {
+  font-weight: 800 !important;
+  color:#2865FA !important;
+}
+
+.head-label {
+  font-weight:800 !important;
+}
+
+.cloud-ready a {
+  font-weight: 800;
+  color:#169900 !important;
+}
+
+.natively-integrated {
+  font-weight: 800 !important;
+  color:#EEB400 !important;
+}
+
+#natively-integrated {
+  background-image: url(../images/parallel.png);
+  background-repeat: no-repeat;
+  background-position: 101% 50%;
+  background-size: 30%;
+}
+
+.multi-device-capable {
+  font-weight: 800 !important;
+  color:#D51A0F !important;
+}
+
+#workflow-maybe {
+  width:1024px;
+  height:768px;
+}
+
+#workflow-maybe .menu {
+  float:left;
+}
+
+#tooling h2 {
+  color:#fff;
+  font-weight:800;
+}
+
+#tooling h4 {
+  font-size:2em;
+  font-weight:800;
+  color:#fff;
+}
+
+#tooling li {
+  background: #FFF;
+  color:#101D28;
+  margin-top:10px;
+  list-style-type: none;
+  padding:10px;
+  font-style:italic;
+}
+
+#tooling li:first-child {
+  font-style:normal;
+  font-weight:800;
+  text-transform: uppercase;
+}
+
+.demo-code pre {
+  margin: 5px auto;
+}

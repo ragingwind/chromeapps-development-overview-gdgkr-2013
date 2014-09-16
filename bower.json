@@ -1,0 +1,9 @@
+{
+  "name": "gdg-devfest-korea-2013-chromeapp",
+  "version": "0.0.0",
+  "dependencies": {
+    "reveal.js": "~2.5.0",
+    "jquery": "~2.0.3"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,10 @@
+{
+    "appName": {
+        "message": "GDG Devfest Korea 2013 - Chrome Apps Development",
+        "description": "The name of the application"
+    },
+    "appDescription": {
+        "message": "Presentaion Chrome App for GDG Devfest Korea 2013",
+        "description": "The description of the application"
+    }
+}

@@ -1,0 +1,32 @@
+{
+  	"name": "__MSG_appName__",
+  	"description": "__MSG_appDescription__",
+  	"version": "1",
+  	"manifest_version": 2,
+  	"default_locale": "en",
+  	"permissions": [
+      "notifications",
+      {
+        "socket": [
+          "tcp-connect:*:9090",
+          "tcp-listen:*:9090"
+        ]
+      },
+      "https://*/*",
+      "http://*/*"
+    ],
+  	"icons": {
+  		"16": "images/gdg-korea-webtech.png",
+  		"128": "images/gdg-korea-webtech.png"
+  	},
+  	"app": {
+  		"background": {
+  			"scripts": [
+  				"scripts/main.js"
+  			]
+  		}
+  	},
+    "sandbox": {
+      "pages": ["manifests.html"]
+    }
+}

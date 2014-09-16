@@ -1,0 +1,85 @@
+.outter {
+  width: 484px;
+  height: 400px
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 1px solid #d8d8d8 !important;
+  border-bottom-width: 2px !important;
+  vertical-align: top;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+
+.chat-message {
+  width: 100%;
+  height: 400px;
+  overflow:hidden;
+}
+
+.chat-message ul {
+  padding:10px;
+  margin:0;
+  width:464px;
+  height:390px;
+  overflow: auto;
+}
+
+.chat-message li {
+  padding:0;
+  margin:0;
+  list-style-type: none;
+  font-size: 0.5em;
+  line-height: 1.6em;
+  overflow: hidden;
+}
+
+.chat-input {
+  width: 100%;
+  height: 110px;
+  border-top: 1px solid #d8d8d8 !important;
+  border-radius: 0 0 2px 2px;
+  background-color: #f8f8f8;
+  padding-top: 20px !important;
+}
+
+.chat-input textarea {
+  width: 370px;
+  height: 3.6em;
+  border-radius: 3px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 1px solid #d8d8d8 !important;
+  border-bottom-width: 2px !important;
+  vertical-align: top;
+  outline: none;
+  font-size: 0.7em;
+  resize: none;
+  overflow: none;
+  float: left;
+}
+
+.chat-input #profile {
+  width:64px;
+  height:64px;
+  background-image: url(../images/jimmymoon-profile.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 64px 64px;
+  display: block;
+  float: left;
+  margin-left:17px;
+  margin-right:15px;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+}
+
+.client-chat {
+  font-weight: 600;
+}
+
+.log-chat {
+  opacity:0.5
+}

@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Chrome Apps Development</title>
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.min.css">
+  <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
+  <link rel="stylesheet" href="styles/reveal_yeoman.css" id="theme">
+  <link rel="stylesheet" href="styles/noti-server.css" id="theme">
+
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+</head>
+
+<body>
+  <div class="reveal">
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+      <section id="title">
+        <h3 id="titleroll">Chrome Apps Development</h3>
+      </section>
+
+      <section id="aboutme">
+        <h2>Alo' Alo'</h2>
+        <ul id="intro">
+          <li>Jimmy Moon</li>
+          <li class="fragment" data-section-bg="aboutme:gplus-logo.png"><a href="https://plus.google.com/107574899030973045541">+107574899030973045541</a></li>
+          <li class="fragment" data-section-bg="aboutme:octocatvector.png"><a href="https://github.com/ragingwind">ragingwind</a></li>
+          <li class="fragment" data-section-bg="aboutme:gdg-logo.png"><a href="https://plus.google.com/communities/109067040035659120428">GDG Korea WebTech</a> organizer</li>
+          <li class="fragment" data-section-bg="aboutme:yeoman.png">
+            <a href="https://github.com/yeoman?tab=members">Yeoman team</a>
+            <ul>
+              <li><a href="https://github.com/yeoman/generator-chromeapp">Chrome apps</a> and <a href="https://github.com/yeoman/generator-chrome-extension">extension</a></li>
+            </ul>
+          </li>
+          <li class="fragment" data-section-bg="aboutme:chromist.png" class="fragment"><a href="http://chromist.org/">chromist.org</a></li>
+        </ul>
+      </section>
+
+      <section id="chromeapp-basic">
+
+        <section id="chrome">
+          <h3>How many-long time?</h3>
+          <div>
+          <div class="fragment fade-out" data-fragment-index="1" id="chrome-logo"></div>
+          <div class="fragment fade-in" data-fragment-index="1" id="chrome-750mil"></div>
+          </div>
+        </section>
+
+        <section id="whatis-chromeapp">
+          <h2 class="chromeapp-logo">Chrome Apps</h2>
+        </section>
+
+        <section id="manifest-compare">
+          <h2>Chrome Apps?</h2>
+          <br/>
+          <div>
+            <table><tr>
+              <td><div class="highlight-red">
+<pre><code>// Packaged App
+// Brandnew Chromeapp
+// Using chrome.* APIs
+
+"app": {
+  "background": {
+    "scripts": [
+      "scripts/main.js"
+    ]
+  }
+}
+</code></pre>
+              </div></td>
+              <td><div class="highlight-red">
+<pre><code>// Legacy Packaged App
+// Never mind!
+// Using extension APIs
+
+"app": {
+  "launch": {
+    "local_path": "main.html"
+  }
+}
+</code></pre>
+              </div></td>
+              <td><div class="highlight-red">
+<pre id="manifest-hostedapp"><code>// Hosted App
+// Big web-service
+// Without chrome.* APIs
+
+"app": {
+  "urls": [
+    "*://mail.google.com/mail/",
+    "*://www.google.com/mail/"
+  ],
+  "launch": {
+    "web_url":
+      "http://mail.google.com/mail/"
+  }
+}
+</code></pre>
+              </div></td>
+            </tr></table>
+          </div>
+          <div class="note"><a href="http://goo.gl/wLMEdH">Choosing an App Type </a></div>
+        </section>
+
+        <section id="packagedapp">
+          <h2 class="chromeapp-logo">Chrome[=<span style="color:#D5151D">Packaged</span>] app</h2>
+          <ul>
+              <li class="fragment">OFFLINE BY DEFAULT</li>
+              <li class="fragment">CLOUD READY</li>
+              <li class="fragment">NATIVELY INTEGRATED</li>
+              <li class="fragment">MULTI-DEVICE CAPABLE</li>
+              </ul>
+        </section>
+
+        <section id="offline-by-default">
+          <h3 class="offline-by-default">Offline by default</h3>
+          <div id="download-chromeapp"></div>
+        </section>
+
+        <section id="wunderlist">
+          <div class="fragment fade-out" data-fragment-index="1" id="wunderlist-offline-png"></div>
+          <div class="fragment fade-int chromeapp-launcher" data-fragment-index="1" id="wunderlist-app">
+            <div id="wunderlist-icon">Wunderlist</div>
+          </div>
+        </section>
+
+        <section id="wunderlist-filestructure">
+          <h4>App Code Stored Locally - <sup class="offline-by-default">Offline by Default</sup></h4>
+<pre><code>
+├── blank.html
+├── config.js
+├── fonts
+├── icons
+├── images
+├── js
+│   ├── libs.js
+│   ├── login.js
+│   └── main.js
+├── manifest.json
+├── service-dev.js
+├── service.js
+└── sounds
+
+23 directories, 1910 files
+</pre></code>
+        </section>
+
+        <section id="infrastructure">
+
+          <h4>Infrastructure Files - <sup class="offline-by-default">Offline by Default</sup></h4>
+          <span class="code-label">manifest.json</span>
+<pre><code>{
+  "name": "Hello World!",
+  "version": "0.1",
+  "app": {
+    "background": {
+      "scripts": ["main.js"]
+    }
+  },
+  "icons": { "16": "icon-16.png", "128": "icon-128.png" }
+}
+</pre></code>
+
+          <span class="code-label">main.js:</span>
+<pre><code>chrome.app.runtime.onLaunched.addListener(function() {
+  chrome.app.window.create('window.html', {
+    'bounds': {
+      'width': 400,
+      'height': 500
+    }
+  });
+});
+</pre></code>
+        </section>
+
+        <section id="offline-first">
+          <h3><a href="http://goo.gl/8uuUL8">Offline First</a> - <sup class="offline-by-default">Offline by Default</sup></h3>
+          <ul>
+            <li class="fragment"><span class="head-label">Javascript: </span>Packaged, `NO` inline JavaScript</li>
+            <li class="fragment"><span class="head-label">CSS, Image, Font: </span>Packaged, Download</li>
+            <li class="fragment"><span class="head-label">Large media resource: </span>`video` and `audio` Tag</li>
+            <li class="fragment"><span class="head-label">Remote webpage: </span><a href="http://goo.gl/rzfx8a">`webview` Tag</a></li>
+            <li class="fragment"><span class="head-label">Local data: </span><a href="http://goo.gl/NXliWy">chrome.storage</a>, <a href="http://goo.gl/vUiQKs">chrome.fileSystem</a>, <a href="http://goo.gl/98OHcl">IndexedDB</a></li>
+            <li class="fragment">Detect <span class="head-label">connection changes: </span><a href="http://goo.gl/KRF0w">Online and offline events</a></li>
+          </ul>
+        </section>
+
+        <section id="cloud-ready">
+          <h3 class="cloud-ready"><a href="http://goo.gl/8uuUL8">Cloud Ready</a></h3>
+          <ul>
+            <li class="fragment"><span class="head-label">Synchronized: </span><a href="http://goo.gl/iLT2vY">chrome.storage.sync</a>, <a href="http://goo.gl/D9LdDQ">chrome.syncFileSystem</a></li>
+            <li class="fragment"><span class="head-label">Push Message: </span><a href="http://goo.gl/EhnR8r">chrome.pushMessaging</a></li>
+            <li class="fragment"><span class="head-label">Open APIs (OAuth2): </span><a href="http://goo.gl/NxU5GM">chrome.identity</a></li>
+            <li class="fragment"><span class="head-label"><a href="http://goo.gl/wkqci">Autoupdating</a></span></li>
+            <li class="fragment"><span class="head-label">One time and In-App Payments: </span><a href="http://goo.gl/oi0Lnk">Google Wallet</a></li>
+          </ul>
+        </section>
+
+        <section id="natively-integrated">
+          <h3 class="natively-integrated">Natively integrated</h3>
+          <ul>
+            <li class="fragment"><span class="head-label">Chrome App Launcher</span></li>
+            <li class="fragment"><span class="head-label">Look and Feel</span>
+              <ul>
+                <li>No Browser frame</li>
+                <li>Window frame</li>
+                <li>Alt-Tab Swiching</li>
+              </ul>
+            <li class="fragment"><span class="head-label">Platform APIs: </span><a href="http://goo.gl/I5IJDV">rich notifications</a>, <a href="http://goo.gl/XRjkFB">alarms</a>, <a href="http://goo. gl/oJUdd1">bluetooth</a>, <a href="http://goo.gl/qGnNd7">socket</a>, <a href="http://goo.gl/MbRE3k">serial</a>, <a href="http://developer.chrome.com/apps/system_cpu.html">system</a> and <a href="http://developer.chrome.com/apps/api_index.html">more</a>.
+          </ul>
+        </section>
+
+        <section id="chromeapp-launcher">
+          <div class="fragment fade-out" data-fragment-index="1" id="chromeapp-launcher-icon"></div>
+          <div class="fragment fade-in" data-fragment-index="1" id="no-browser-capture"></div>
+        </section>
+
+        <section id="chat-demo">
+          <h4>Play with tcp and notification - <sup class="natively-integrated">Natively integrated</sup></h4>
+          <div class="outter">
+            <div class="chat-message">
+              <ul id="chat-log"></ul>
+            </div>
+            <div class="chat-input">
+              <span id="profile"></span>
+              <textarea name="textarea" id="chat-box" disabled></textarea>
+              <!-- <input type="text"> -->
+            </div>
+          </div>
+        </section>
+
+        <section id="multi-device-capable">
+          <h3 class="multi-device-capable">Multi-device Capable</h3>
+          <div class="viwer">
+            <div class="fragment fade-out" data-fragment-index="1" id="devices"></div>
+            <div class="fragment fade-in" data-fragment-index="1" id="chromeapp-launchers"></div>
+          </div>
+        </section>
+
+        <section id="chromeapp-launcher-on-multi-device">
+          <h4>Mobile Chrome Apps with - <sup class="multi-device-capable">Multi-device capable<sup></h4>
+          <div id="mobile-devices"></div>
+          <a href="https://github.com/MobileChromeApps/chrome-cordova/">Chrome cordova plugin</a>
+        </section>
+
+
+      </section>
+
+      <section>
+        <section id="development-workflow">
+          <h2 class="chromeapp-logo">Chrome App Development Workflow</h2>
+        </section>
+
+        <section id="chromestudio" class="inner-slide">
+          <h2>New Project for Chrome Apps</h2>
+          <div class="fragment fade-out" data-fragment-index="1">
+            <img src="images/chromestudio.png" alt="">
+          </div>
+          <div class="fragment fade-in" data-fragment-index="1">
+            <img src="images/chromestudio-remove.png" alt="">
+          </div>
+        </section>
+
+        <section id="workflow-setup">
+          <h2>Setup - <sup>Workflow</sup></h2>
+          <ul>
+            <li class="fragment"><b>Scaffolding</b></li>
+            <li class="fragment"><b>Create</b>, <b>Modify</b> manifest.json</li>
+            <li class="fragment"><b>Create</b> main.js, <b>Add</b> boilerplate code</li>
+            <li class="fragment"><b>Create</b> index.html, <b>Add</b> boilerplate code</li>
+            <li class="fragment"><b>Download</b> libraries</li>
+            <li class="fragment"><b>Download</b> frameworks</li>
+            <li class="fragment"><b>Setup</b> build env</li>
+            <li class="fragment"><b>Copy</b>, <b>Setup</b> configs</li>
+          </ul>
+        </section>
+
+        <section id="workflow-dev">
+          <h2>Develop - <sup>Workflow</sup></h2>
+          <ul>
+            <li class="fragment"><b>Write</b> `real` code</li>
+            <li class="fragment"><b>Compile</b> `styles`, `coffeescript`</li>
+            <li class="fragment"><b>Lint</b> `css`, `js`</li>
+            <li class="fragment"><b>Find</b> Chrome</li>
+            <li class="fragment"><b>Find</b> My Chrome App</li>
+            <li class="fragment"><b>Reload</b> My Chrome App</li>
+            <li class="fragment">...</li>
+            <li class="fragment">1000 + α more time</li>
+          </ul>
+        </section>
+
+        <section id="workflow-build">
+          <h2>Build - <sup>Workflow</sup></h2>
+          <ul>
+            <li class="fragment"><b>Lint</b> codes</li>
+            <li class="fragment"><b>Running</b> unit test</li>
+            <li class="fragment"><b>Minify</b>, <b>Concatenate</b> codes</li>
+            <li class="fragment"><b>Generate</b> images, icons</li>
+            <li class="fragment"><b>Copy</b> dist files</li>
+            <li class="fragment"><b>Increase</b> build number</li>
+            <li class="fragment"><b>Compress</b> dist files</li>
+          </ul>
+        </section>
+
+        <section id="tooling" data-background="images/tooling.png">
+          <h2>Tooling workflow</h2>
+          <ul>
+            <li class="fragment">First do it, Then do it right. Then do it better</li>
+            <li class="fragment">- From idea to prototype in < 10mins</li>
+            <li class="fragment">- Reduce the setup time for your tools</li>
+            <li class="fragment">- Automate repetitive tasks</li>
+            <li class="fragment">- Reduce time writing boilerplate</li>
+          </ul>
+        </section>
+
+        <section id="development-toolset">
+          <h3>Development Toolset</h3>
+          <!-- <div id="toolset"> -->
+            <img src="images/toolset-grey.png" alt="" id="toolset">
+
+            <div class="fragment" id="toolset-yo">
+              <img src="images/yo.png" alt="" id="yo-color">
+              <ul>
+                <li><a href="http://yeoman.io/community-generators.html">296+ Generators</a></li>
+                <li>Scaffolding</li>
+                <li>Morden workflow, <br/>Best practice</sub></li>
+                <li><a href="https://github.com/yeoman?tab=members">Great team</a></li>
+                <li>Saving your time!</li>
+              </ul>
+            </div>
+
+            <div class="fragment" id="toolset-grunt">
+              <img src="images/grunt.png" alt="" id="grunt-color">
+              <ul>
+                <li><a href="http://gruntjs.com/plugins">1649+ Tasks</a></li>
+                <li>Build, Preview,<br/>Test and More</li>
+                <li>Automation</li>
+              </ul>
+            </div>
+
+            <div class="fragment" id="toolset-bower">
+              <img src="images/bower.png" alt="" id="bower-color">
+              <ul>
+                <li><a href="http://sindresorhus.com/bower-components/">+5367 Libraries</a></li>
+                <li>Official Package</li>
+                <li>Dependency <br/>management</li>
+              </ul>
+            </div>
+        </section>
+
+        <section id="chromeapp-development-demo">
+          <h2>Demo With Yeoman</h2>
+          <img src="images/yeoman-and-chrome.png" alt="">
+        </section>
+
+        <section id="workflow-demo-1" class="demo-code">
+          <h3>Setup<sup> - yo</sup></h3>
+          <span class="code-label">Scaffolding Chrome App</span>
+<pre><code>$ yo chromeapp
+├── Gruntfile.js
+├── app
+│   ├── _locales - en - messages.json
+│   ├── images - icon-128.png, icon-16.png
+│   ├── index.html
+│   ├── manifest.json
+│   ├── scripts - chromereload.js, main.js
+│   └── styles - main.css
+├── bower.json
+└── package.json
+</pre></code>
+          <span class="code-label"><a href="http://developer.chrome.com/apps/declare_permissions.html">Permissions:</a></span>
+<pre><code>$ yo chromeapp:permission</pre></code>
+          <span class="code-label"><a href="https://github.com/GoogleChrome/chrome-app-samples">Google Chrome App samples:</a></span>
+<pre><code>$ yo chromeapp:samples</pre></code>
+          <div class="note">WARNING! Some features still in experimental</div>
+        </section>
+
+        <section id="workflow-demo-2">
+          <h3>Develop and Build<sup> - Grunt, Bower</sup></h3>
+          <span class="code-label">Download libraries</span>
+<pre><code>$ bower install jquery --save && ls -l app/bower_components
+&& cat bower.json</pre></code>
+          <span class="code-label">Write code and auto-reload</span>
+<pre><code>$ grunt debug</pre></code>
+          <span class="code-label">Build</span>
+<pre><code>$ grunt build</pre></code>
+          <div class="note">WARNING! Some features still in experimental</div>
+        </section>
+
+        <section id="thanks">
+          <h2>Thanks</h2>
+        </section>
+
+      </section>
+
+    </div>
+  </div>
+
+<script src="bower_components/jquery/jquery.min.js"></script>
+<script src="bower_components/reveal.js/lib/js/head.min.js"></script>
+<script src="bower_components/reveal.js/js/reveal.min.js"></script>
+<script src="scripts/noti-server.js"></script>
+<script src="scripts/app.js"></script>
+
+</body>
+</html>
+
